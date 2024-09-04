@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Propietario</title>
+    <style>
+    /* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin: 0;
+}
+
+/* Sección de formulario */
+.form-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+/* Etiquetas del formulario */
+.form-section label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Campos del formulario */
+.form-section input[type="text"], 
+.form-section input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Botón del formulario */
+.form-section button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Enlace de regreso */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #007bff;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+ 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Registrar Propietario</h1>
+        </header>
+
+        <a href="{% url 'home' %}" class="back-link">Volver al Inicio</a>
+
+        <div class="form-section">
+            <form method="post" action="{% url 'registrar_propietario' %}">
+                {% csrf_token %}
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="numero_apartamento">Número Apartamento:</label>
+                <input type="text" id="numero_apartamento" name="numero_apartamento" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        © Mi Aplicación de Condominio
+    </footer>
+</body>
+</html>

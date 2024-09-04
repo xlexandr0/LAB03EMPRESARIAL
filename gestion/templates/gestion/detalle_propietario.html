@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle del Propietario</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<style>
+   /* Estilos generales */
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+/* Tabla de detalles */
+table {
+    width: 90%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    border: 1px solid #dfe6e9;
+    padding: 1rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #2980b9;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table td {
+    background-color: #ffffff;
+}
+
+/* Enlaces */
+p a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+p a:hover {
+    color: #1f6f9f;
+    text-decoration: underline;
+}
+
+/* Botones */
+button {
+    background-color: #2980b9;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1f6f9f;
+}
+
+</style>
+<body>
+    <h1>Detalle del Propietario</h1>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ propietario.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ propietario.nombre }}</td>
+        </tr>
+        <tr>
+            <th>Número de Apartamento</th>
+            <td>{{ propietario.numero_apartamento }}</td>
+        </tr>
+        <tr>
+            <th>Teléfono</th>
+            <td>{{ propietario.telefono }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ propietario.email }}</td>
+        </tr>
+    </table>
+    
+    <p><a href="{% url 'editar_propietario' propietario.id %}">Editar</a></p>
+    <p><a href="{% url 'eliminar_propietario' propietario.id %}">Eliminar</a></p>
+    <p><a href="{% url 'listar_propietarios' %}">Volver al Listado</a></p>
+</body>
+</html>

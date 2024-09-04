@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Registro</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<style>
+    /* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Encabezado */
+h1 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+}
+
+/* Información del registro */
+p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* Formularios */
+form {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* Botones */
+button,
+a.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+button {
+    background-color: #dc3545;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #007bff;
+}
+
+.btn-secondary:hover {
+    background-color: #0056b3;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 0.5rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de error */
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>Eliminar Registro</h1>
+
+        <p>¿Estás seguro de que deseas eliminar el siguiente registro?</p>
+
+        <p><strong>ID:</strong> {{ registro.id }}</p>
+        <p><strong>Fecha y Hora de Entrada:</strong> {{ registro.fecha_hora_entrada|date:"d/m/Y H:i" }}</p>
+        <p><strong>Fecha y Hora de Salida:</strong>
+            {% if registro.fecha_hora_salida %}
+                {{ registro.fecha_hora_salida|date:"d/m/Y H:i" }}
+            {% else %}
+                No registrado
+            {% endif %}
+        </p>
+        <p><strong>Vehículo:</strong> {{ registro.vehiculo }}</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'listar_registros' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

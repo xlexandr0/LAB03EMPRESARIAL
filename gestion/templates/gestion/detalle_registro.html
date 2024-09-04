@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Registro</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<style>
+ /* Estilos generales */
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Detalles */
+.details p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.details p strong {
+    color: #2c3e50;
+}
+
+/* Acciones */
+.actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.actions a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0 0.5rem;
+}
+
+.actions a:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #007bff;
+}
+
+.btn-secondary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-primary {
+    background-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>Detalle del Registro</h1>
+
+        <div class="details">
+            <p><strong>ID:</strong> {{ registro.id }}</p>
+            <p><strong>Fecha y Hora de Entrada:</strong> {{ registro.fecha_hora_entrada|date:"d/m/Y H:i" }}</p>
+            <p><strong>Fecha y Hora de Salida:</strong>
+                {% if registro.fecha_hora_salida %}
+                    {{ registro.fecha_hora_salida|date:"d/m/Y H:i" }}
+                {% else %}
+                    No registrado
+                {% endif %}
+            </p>
+            <p><strong>Vehículo:</strong> {{ registro.vehiculo }}</p>
+        </div>
+
+        <div class="actions">
+            <p><a href="{% url 'editar_registro' registro.id %}" class="btn btn-secondary">Editar</a> | 
+               <a href="{% url 'eliminar_registro' registro.id %}" class="btn btn-danger">Eliminar</a> | 
+               <a href="{% url 'listar_registros' %}" class="btn btn-primary">Volver al Listado</a></p>
+        </div>
+    </div>
+</body>
+</html>

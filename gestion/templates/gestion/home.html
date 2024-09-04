@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Sistema de Gestión de Vehículos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #eaeaea;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 1rem;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    flex: 1;
+    min-width: 300px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin: 0 0 1rem;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    margin: 0.5rem 0;
+}
+
+.card ul li a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.card ul li a:hover {
+    color: #2980b9;
+}
+
+footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 1rem;
+}
+
+</style>
+<body>
+    <div class="page-container">
+        <header>
+            <div class="header-content">
+                <h1>Sistema de Gestión de Vehículos</h1>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'registrar_propietario' %}">Registrar Propietario</a></li>
+                        <li><a href="{% url 'listar_propietarios' %}">Listar Propietarios</a></li>
+                        <li><a href="{% url 'registrar_vehiculo' %}">Registrar Vehículo</a></li>
+                        <li><a href="{% url 'listar_vehiculos' %}">Listar Vehículos</a></li>
+                        <li><a href="{% url 'registrar_registro' %}">Registrar Ingreso/Salida</a></li>
+                        <li><a href="{% url 'listar_registros' %}">Listar Ingresos/Salidas</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="content">
+                <div class="card">
+                    <h2>Propietarios</h2>
+                    <ul>
+                        <li><a href="{% url 'registrar_propietario' %}">Registrar Propietario</a></li>
+                        <li><a href="{% url 'listar_propietarios' %}">Listar Propietarios</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Vehículos</h2>
+                    <ul>
+                        <li><a href="{% url 'registrar_vehiculo' %}">Registrar Vehículo</a></li>
+                        <li><a href="{% url 'listar_vehiculos' %}">Listar Vehículos</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Ingreso/Salida</h2>
+                    <ul>
+                        <li><a href="{% url 'registrar_registro' %}">Registrar Ingreso/Salida</a></li>
+                        <li><a href="{% url 'listar_registros' %}">Listar Ingresos/Salidas</a></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© Mi Aplicación de Condominio</p>
+        </footer>
+    </div>
+</body>
+</html>

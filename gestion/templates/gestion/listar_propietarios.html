@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Propietarios</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<style>
+    /* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 2% auto;
+    padding: 2rem;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin: 0;
+}
+
+/* Sección de contenido */
+.section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1.5rem;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Acciones en la tabla */
+.actions a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+/* Enlaces de retorno */
+.back-link, .btn-primary {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-link a, .btn-primary {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-link a:hover, .btn-primary:hover {
+    text-decoration: underline;
+}
+
+/* Botones */
+button, .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #007bff;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+</style>
+<body>
+    <h1>Listado de Propietarios</h1>
+
+    <!-- Botón para volver al inicio -->
+    <p><a href="{% url 'home' %}" class="btn btn-primary">Volver al Inicio</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Número de Apartamento</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for propietario in propietarios %}
+            <tr>
+                <td>{{ propietario.id }}</td>
+                <td>{{ propietario.nombre }}</td>
+                <td>{{ propietario.numero_apartamento }}</td>
+                <td>{{ propietario.telefono }}</td>
+                <td>{{ propietario.correo_electronico }}</td>
+                <td>
+                    <a href="{% url 'detalle_propietario' propietario.id %}">Ver Detalle</a> |
+                    <a href="{% url 'editar_propietario' propietario.id %}">Editar</a> |
+                    <a href="{% url 'eliminar_propietario' propietario.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <footer>
+        <p>© Mi Aplicación de Condominio</p>
+    </footer>
+</body>
+</html>
